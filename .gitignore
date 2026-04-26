@@ -1,0 +1,8 @@
+data/
+models/
+__pycache__/
+*.csv
+*.pkl
+*.h5
+*.pth
+.env
