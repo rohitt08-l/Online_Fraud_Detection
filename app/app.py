@@ -1,13 +1,15 @@
 import sys
 import os
 
-# ✅ Fix import path (VERY IMPORTANT)
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# ✅ Fix import path
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(BASE_DIR)
 
 from flask import Flask, request, jsonify
 import pandas as pd
 import pickle
 
+from utils.model_loader import ensure_model_exists
 from src.preprocessing import feature_engineering
 
 app = Flask(__name__)
@@ -18,10 +20,13 @@ def home():
 
 
 # -------------------------------
-# Load Model Files (Robust Path)
+# Ensure Model Exists
 # -------------------------------
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+ensure_model_exists()
 
+# -------------------------------
+# Load Model Files
+# -------------------------------
 model_path = os.path.join(BASE_DIR, "models", "fraud_model.pkl")
 encoder_path = os.path.join(BASE_DIR, "models", "encoder.pkl")
 scaler_path = os.path.join(BASE_DIR, "models", "scaler.pkl")
