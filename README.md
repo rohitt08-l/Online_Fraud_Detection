@@ -238,8 +238,3 @@ AIML Engineer | ML Enthusiast
 This project demonstrates a **complete ML pipeline**:
 EDA → Preprocessing → Model Training → API → UI
 
-It is suitable for:
-
-* Internships
-* ML Engineer roles
-* Portfolio projects
